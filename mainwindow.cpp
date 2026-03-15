@@ -36,12 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     loadChercheurs();
-
     ui->dateEdit_3->setDate(QDate(2000,1,1));
     ui->dateEdit_4->setDate(QDate::currentDate());
-
     refreshTable();
 }
 
@@ -100,8 +97,28 @@ void MainWindow::on_pushButton_2_clicked()
     QString resume = ui->plainTextEdit->toPlainText().trimmed();
     QString statut = ui->comboBox->currentText();
 
-    if(titre.isEmpty() || resume.isEmpty()) {
-        QMessageBox::warning(this, "Erreur", "Titre et Résumé obligatoires !");
+    if(titre.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Le titre est obligatoire !");
+        ui->lineEdit_2->setFocus();
+        return;
+    }
+    if(titre.length() > 100) {
+        QMessageBox::warning(this, "Erreur", "Le titre ne doit pas dépasser 100 caractères !");
+        ui->lineEdit_2->setFocus();
+        return;
+    }
+    if(resume.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Le résumé est obligatoire !");
+        ui->plainTextEdit->setFocus();
+        return;
+    }
+    if(resume.length() > 1000) {
+        QMessageBox::warning(this, "Erreur", "Le résumé ne doit pas dépasser 1000 caractères !");
+        ui->plainTextEdit->setFocus();
+        return;
+    }
+    if(id_chercheur == 0) {
+        QMessageBox::warning(this, "Erreur", "Veuillez sélectionner un chercheur !");
         return;
     }
 
@@ -109,9 +126,11 @@ void MainWindow::on_pushButton_2_clicked()
 
     if(A.ajouter()) {
         QMessageBox::information(this, "Succès", "Article créé !");
+        ui->lineEdit_2->clear();
+        ui->plainTextEdit->clear();
         refreshTable();
     } else {
-        QMessageBox::critical(this, "Erreur", "Impossible d'ajouter l'article. Vérifiez le titre.");
+        QMessageBox::critical(this, "Erreur", "Cet article existe déjà !");
     }
 }
 
@@ -121,6 +140,12 @@ void MainWindow::on_pushButton_clicked()
     QString statut = ui->comboBox_2->currentText();
     QDate dateFrom = ui->dateEdit_3->date();
     QDate dateTo   = ui->dateEdit_4->date();
+
+    if(dateFrom > dateTo) {
+        QMessageBox::warning(this, "Erreur", "La date de début doit être avant la date de fin !");
+        return;
+    }
+
     refreshTable(titre, statut, dateFrom, dateTo);
 }
 
@@ -128,11 +153,12 @@ void MainWindow::on_pushButton_5_clicked()
 {
     int row = ui->tableWidget->currentRow();
     if(row < 0) {
-        QMessageBox::warning(this, "Erreur", "Sélectionnez un article !");
+        QMessageBox::warning(this, "Erreur", "Veuillez sélectionner un article à supprimer !");
         return;
     }
     int id = ui->tableWidget->item(row,0)->text().toInt();
-    if(QMessageBox::question(this, "Supprimer", "Voulez-vous vraiment supprimer ?",
+    if(QMessageBox::question(this, "Supprimer",
+                              "Voulez-vous vraiment supprimer cet article ?",
                               QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes) {
         if(tmp_article.supprimer(id)) {
             QMessageBox::information(this, "Succès", "Article supprimé !");
@@ -193,8 +219,10 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_11_clicked()
 {
     QString oldTitle = ui->lineEdit->text().trimmed();
+
     if(oldTitle.isEmpty()) {
-        QMessageBox::warning(this,"Modifier","Entrez le titre à modifier !");
+        QMessageBox::warning(this,"Modifier","Veuillez entrer le titre de l'article à modifier !");
+        ui->lineEdit->setFocus();
         return;
     }
 
@@ -203,7 +231,7 @@ void MainWindow::on_pushButton_11_clicked()
     query.bindValue(":titre", oldTitle);
 
     if(!query.exec() || !query.next()) {
-        QMessageBox::warning(this,"Modifier","Aucun article trouvé !");
+        QMessageBox::warning(this,"Modifier","Aucun article trouvé avec ce titre !");
         return;
     }
 
@@ -246,8 +274,20 @@ void MainWindow::on_pushButton_11_clicked()
         QString newStatut = newStatutCombo->currentText();
         int newChercheurId = newChercheurCombo->currentData().toInt();
 
-        if(newTitle.isEmpty() || newResume.isEmpty()) {
-            QMessageBox::warning(this,"Modifier","Titre et Résumé obligatoires !");
+        if(newTitle.isEmpty()) {
+            QMessageBox::warning(this,"Modifier","Le titre est obligatoire !");
+            return;
+        }
+        if(newTitle.length() > 100) {
+            QMessageBox::warning(this,"Modifier","Le titre ne doit pas dépasser 100 caractères !");
+            return;
+        }
+        if(newResume.isEmpty()) {
+            QMessageBox::warning(this,"Modifier","Le résumé est obligatoire !");
+            return;
+        }
+        if(newResume.length() > 1000) {
+            QMessageBox::warning(this,"Modifier","Le résumé ne doit pas dépasser 1000 caractères !");
             return;
         }
 
@@ -262,10 +302,57 @@ void MainWindow::on_pushButton_11_clicked()
         updateQuery.bindValue(":id", idArticle);
 
         if(updateQuery.exec()) {
-            QMessageBox::information(this,"Modifier","Article modifié !");
+            QMessageBox::information(this,"Modifier","Article modifié avec succès !");
             refreshTable();
         } else {
             QMessageBox::critical(this,"Modifier","Erreur: "+updateQuery.lastError().text());
         }
     }
+}
+
+void MainWindow::on_pushButton_12_clicked()
+{
+    QSqlQuery query;
+    query.prepare("SELECT STATUT, COUNT(*) as NB FROM SYSTEM.ARTICLES GROUP BY STATUT");
+
+    if(!query.exec()) {
+        QMessageBox::critical(this, "Erreur", query.lastError().text());
+        return;
+    }
+
+    QString message = "=== Statistiques des Articles ===\n\n";
+    int total = 0;
+    while(query.next()) {
+        QString statut = query.value("STATUT").toString();
+        int nb = query.value("NB").toInt();
+        total += nb;
+        message += statut + " : " + QString::number(nb) + " article(s)\n";
+    }
+    message += "\nTotal : " + QString::number(total) + " article(s)";
+
+    QMessageBox::information(this, "Statistiques", message);
+}
+
+void MainWindow::on_pushButton_13_clicked()
+{
+    QSqlQuery query;
+    query.prepare("SELECT CHERCHEUR_ASSOCIE, COUNT(*) as NB "
+                  "FROM SYSTEM.ARTICLES "
+                  "GROUP BY CHERCHEUR_ASSOCIE "
+                  "ORDER BY NB DESC");
+
+    if(!query.exec()) {
+        QMessageBox::critical(this, "Erreur", query.lastError().text());
+        return;
+    }
+
+    QString message = "=== Top Chercheurs ===\n\n";
+    while(query.next()) {
+        int idC = query.value("CHERCHEUR_ASSOCIE").toInt();
+        QString name = chercheurMap.contains(idC) ? chercheurMap[idC] : "Inconnu";
+        int nb = query.value("NB").toInt();
+        message += name + " : " + QString::number(nb) + " article(s)\n";
+    }
+
+    QMessageBox::information(this, "Top Chercheur", message);
 }

@@ -1845,9 +1845,9 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>8</y>
-        <width>201</width>
+        <x>20</x>
+        <y>10</y>
+        <width>141</width>
         <height>41</height>
        </rect>
       </property>
@@ -2349,7 +2349,7 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>10</pointsize>
         <italic>false</italic>
         <bold>true</bold>
        </font>
@@ -2375,9 +2375,9 @@ QPushButton:hover {
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>190</x>
         <y>10</y>
-        <width>171</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -2879,7 +2879,7 @@ QPushButton:hover {
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>10</pointsize>
         <italic>false</italic>
         <bold>true</bold>
        </font>
@@ -2905,9 +2905,9 @@ QPushButton:hover {
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>8</y>
-        <width>161</width>
+        <x>370</x>
+        <y>10</y>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -3409,7 +3409,7 @@ QPushButton:hover {
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>10</pointsize>
         <italic>false</italic>
         <bold>true</bold>
        </font>
@@ -3430,6 +3430,50 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string>Exporter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_12">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>10</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 106, 0);</string>
+      </property>
+      <property name="text">
+       <string>Statistiques</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_13">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>10</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 85, 0);</string>
+      </property>
+      <property name="text">
+       <string>Top Chercheur</string>
       </property>
      </widget>
     </widget>

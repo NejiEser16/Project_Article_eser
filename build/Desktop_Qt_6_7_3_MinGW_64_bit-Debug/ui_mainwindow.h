@@ -61,6 +61,8 @@ public:
     QPushButton *pushButton_3;
     QPushButton *pushButton_5;
     QPushButton *pushButton_4;
+    QPushButton *pushButton_12;
+    QPushButton *pushButton_13;
     QLabel *label_13;
     QTableWidget *tableWidget;
     QFrame *frame;
@@ -585,7 +587,7 @@ public:
         groupBox_6->setGeometry(QRect(160, 60, 871, 61));
         pushButton_3 = new QPushButton(groupBox_6);
         pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(70, 8, 201, 41));
+        pushButton_3->setGeometry(QRect(20, 10, 141, 41));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush1);
         palette3.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -648,7 +650,11 @@ public:
 #endif
         palette3.setBrush(QPalette::Disabled, QPalette::Accent, brush12);
         pushButton_3->setPalette(palette3);
-        pushButton_3->setFont(font11);
+        QFont font13;
+        font13.setPointSize(10);
+        font13.setBold(true);
+        font13.setItalic(false);
+        pushButton_3->setFont(font13);
         pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #ff7e39;\n"
 "    color: white;\n"
@@ -663,7 +669,7 @@ public:
 "}"));
         pushButton_5 = new QPushButton(groupBox_6);
         pushButton_5->setObjectName("pushButton_5");
-        pushButton_5->setGeometry(QRect(340, 10, 171, 41));
+        pushButton_5->setGeometry(QRect(190, 10, 151, 41));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush1);
         palette4.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -740,7 +746,7 @@ public:
         brush25.setStyle(Qt::SolidPattern);
         palette4.setBrush(QPalette::Disabled, QPalette::Accent, brush25);
         pushButton_5->setPalette(palette4);
-        pushButton_5->setFont(font11);
+        pushButton_5->setFont(font13);
         pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #ff7e39;\n"
 "    color: white;\n"
@@ -755,7 +761,7 @@ public:
 "}"));
         pushButton_4 = new QPushButton(groupBox_6);
         pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(580, 8, 161, 41));
+        pushButton_4->setGeometry(QRect(370, 10, 151, 41));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush1);
         palette5.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -818,7 +824,7 @@ public:
 #endif
         palette5.setBrush(QPalette::Disabled, QPalette::Accent, brush12);
         pushButton_4->setPalette(palette5);
-        pushButton_4->setFont(font11);
+        pushButton_4->setFont(font13);
         pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #ff7e39;\n"
 "    color: white;\n"
@@ -831,15 +837,25 @@ public:
 "QPushButton:hover {\n"
 "    background-color: #e67e22;\n"
 "}"));
+        pushButton_12 = new QPushButton(groupBox_6);
+        pushButton_12->setObjectName("pushButton_12");
+        pushButton_12->setGeometry(QRect(560, 10, 131, 41));
+        pushButton_12->setFont(font12);
+        pushButton_12->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 106, 0);"));
+        pushButton_13 = new QPushButton(groupBox_6);
+        pushButton_13->setObjectName("pushButton_13");
+        pushButton_13->setGeometry(QRect(720, 10, 121, 41));
+        pushButton_13->setFont(font12);
+        pushButton_13->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 0);"));
         label_13 = new QLabel(groupBox);
         label_13->setObjectName("label_13");
         label_13->setGeometry(QRect(150, 570, 171, 31));
-        QFont font13;
-        font13.setPointSize(16);
-        font13.setBold(true);
-        font13.setItalic(true);
-        font13.setUnderline(true);
-        label_13->setFont(font13);
+        QFont font14;
+        font14.setPointSize(16);
+        font14.setBold(true);
+        font14.setItalic(true);
+        font14.setUnderline(true);
+        label_13->setFont(font14);
         label_13->setStyleSheet(QString::fromUtf8("color:#1a3a8a;"));
         tableWidget = new QTableWidget(groupBox);
         if (tableWidget->columnCount() < 6)
@@ -869,11 +885,11 @@ public:
         tableWidget->setObjectName("tableWidget");
         tableWidget->setGeometry(QRect(230, 630, 641, 131));
         tableWidget->setMaximumSize(QSize(671, 16777215));
-        QFont font14;
-        font14.setPointSize(8);
-        font14.setBold(true);
-        font14.setItalic(true);
-        tableWidget->setFont(font14);
+        QFont font15;
+        font15.setPointSize(8);
+        font15.setBold(true);
+        font15.setItalic(true);
+        tableWidget->setFont(font15);
         tableWidget->setStyleSheet(QString::fromUtf8("/* Forces the background of the entire table area to white */\n"
 "QTableView {\n"
 "    background-color: white;\n"
@@ -1011,13 +1027,13 @@ public:
         pushButton_7 = new QPushButton(frame);
         pushButton_7->setObjectName("pushButton_7");
         pushButton_7->setGeometry(QRect(-10, 80, 151, 61));
-        QFont font15;
-        font15.setPointSize(11);
-        font15.setBold(true);
-        font15.setItalic(true);
-        font15.setUnderline(true);
-        font15.setStrikeOut(false);
-        pushButton_7->setFont(font15);
+        QFont font16;
+        font16.setPointSize(11);
+        font16.setBold(true);
+        font16.setItalic(true);
+        font16.setUnderline(true);
+        font16.setStrikeOut(false);
+        pushButton_7->setFont(font16);
         pushButton_7->setStyleSheet(QString::fromUtf8("background-color: #1a3a8a;\n"
 "color: white;\n"
 "font-weight: bold;\n"
@@ -1025,20 +1041,20 @@ public:
         pushButton_8 = new QPushButton(frame);
         pushButton_8->setObjectName("pushButton_8");
         pushButton_8->setGeometry(QRect(-10, 160, 151, 61));
-        QFont font16;
-        font16.setPointSize(11);
-        font16.setBold(true);
-        font16.setItalic(true);
-        font16.setUnderline(true);
-        pushButton_8->setFont(font16);
+        QFont font17;
+        font17.setPointSize(11);
+        font17.setBold(true);
+        font17.setItalic(true);
+        font17.setUnderline(true);
+        pushButton_8->setFont(font17);
         pushButton_9 = new QPushButton(frame);
         pushButton_9->setObjectName("pushButton_9");
         pushButton_9->setGeometry(QRect(-10, 240, 151, 61));
-        pushButton_9->setFont(font16);
+        pushButton_9->setFont(font17);
         pushButton_10 = new QPushButton(frame);
         pushButton_10->setObjectName("pushButton_10");
         pushButton_10->setGeometry(QRect(-10, 320, 151, 61));
-        pushButton_10->setFont(font16);
+        pushButton_10->setFont(font17);
         label_14 = new QLabel(groupBox);
         label_14->setObjectName("label_14");
         label_14->setGeometry(QRect(-10, 0, 151, 141));
@@ -1091,6 +1107,8 @@ public:
         pushButton_3->setText(QCoreApplication::translate("MainWindow", "Nouveau article", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
         pushButton_4->setText(QCoreApplication::translate("MainWindow", "Exporter", nullptr));
+        pushButton_12->setText(QCoreApplication::translate("MainWindow", "Statistiques", nullptr));
+        pushButton_13->setText(QCoreApplication::translate("MainWindow", "Top Chercheur", nullptr));
         label_13->setText(QCoreApplication::translate("MainWindow", "Article list:", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "ID", nullptr));
