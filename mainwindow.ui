@@ -358,8 +358,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -430,8 +430,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -439,8 +439,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -522,8 +522,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -594,8 +594,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -603,8 +603,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -686,8 +686,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -758,8 +758,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -767,8 +767,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -847,11 +847,17 @@ QComboBox QAbstractItemView {
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">
-background-color: #ff7e39;
-color: white;
-border-radius: 4px;
-font-weight: bold;</string>
+       <string notr="true">QPushButton {
+    background-color: rgb(255, 106, 0);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
+}</string>
       </property>
       <property name="text">
        <string>Rechercher</string>
@@ -1027,9 +1033,17 @@ font-weight: bold;</string>
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: white;
-
-background-color: rgb(255, 102, 0);</string>
+       <string notr="true">QPushButton {
+    background-color: rgb(255, 106, 0);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
+}</string>
       </property>
       <property name="text">
        <string>Modifier</string>
@@ -1280,8 +1294,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1352,8 +1366,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1361,8 +1375,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1444,8 +1458,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1516,8 +1530,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1525,8 +1539,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1608,8 +1622,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1680,8 +1694,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1689,8 +1703,8 @@ QComboBox QAbstractItemView {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1768,7 +1782,17 @@ QComboBox QAbstractItemView {
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: white;</string>
+       <string notr="true">QPushButton {
+    background-color: rgb(255, 106, 0);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
+}</string>
       </property>
       <property name="text">
        <string>Enregistrer</string>
@@ -1867,8 +1891,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1939,8 +1963,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -1948,8 +1972,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2031,8 +2055,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2103,8 +2127,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2112,8 +2136,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2195,8 +2219,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2267,8 +2291,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2276,8 +2300,8 @@ color: rgb(0, 0, 0);</string>
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2356,16 +2380,15 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-    background-color: #ff7e39;
+    background-color: rgb(255, 106, 0);
     color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    border: 1px solid #d35400;
-    padding: 5px;
+    border-radius: 5px;
 }
-
 QPushButton:hover {
-    background-color: #e67e22;
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
 }</string>
       </property>
       <property name="text">
@@ -2397,8 +2420,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2469,8 +2492,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2478,8 +2501,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2561,8 +2584,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2633,8 +2656,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2642,8 +2665,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2725,8 +2748,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2797,8 +2820,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2806,8 +2829,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2886,16 +2909,15 @@ QPushButton:hover {
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-    background-color: #ff7e39;
+    background-color: rgb(255, 106, 0);
     color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    border: 1px solid #d35400;
-    padding: 5px;
+    border-radius: 5px;
 }
-
 QPushButton:hover {
-    background-color: #e67e22;
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
 }</string>
       </property>
       <property name="text">
@@ -2927,8 +2949,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -2999,8 +3021,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3008,8 +3030,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3091,8 +3113,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3163,8 +3185,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3172,8 +3194,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3255,8 +3277,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3327,8 +3349,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3336,8 +3358,8 @@ QPushButton:hover {
           <brush brushstyle="SolidPattern">
            <color alpha="255">
             <red>255</red>
-            <green>126</green>
-            <blue>57</blue>
+            <green>106</green>
+            <blue>0</blue>
            </color>
           </brush>
          </colorrole>
@@ -3416,16 +3438,15 @@ QPushButton:hover {
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-    background-color: #ff7e39;
+    background-color: rgb(255, 106, 0);
     color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    border: 1px solid #d35400;
-    padding: 5px;
+    border-radius: 5px;
 }
-
 QPushButton:hover {
-    background-color: #e67e22;
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
 }</string>
       </property>
       <property name="text">
@@ -3448,7 +3469,17 @@ QPushButton:hover {
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 106, 0);</string>
+       <string notr="true">QPushButton {
+    background-color: rgb(255, 106, 0);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
+}</string>
       </property>
       <property name="text">
        <string>Statistiques</string>
@@ -3470,7 +3501,17 @@ QPushButton:hover {
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 85, 0);</string>
+       <string notr="true">QPushButton {
+    background-color: rgb(255, 106, 0);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(200, 80, 0);
+}
+QPushButton:pressed {
+    background-color: rgb(150, 60, 0);
+}</string>
       </property>
       <property name="text">
        <string>Top Chercheur</string>
@@ -3543,6 +3584,10 @@ QHeaderView::section {
     color: white;
     font-weight: bold;
     border: 1px solid white;
+}
+QTableWidget::item:selected {
+    background-color: rgb(255, 106, 0);
+    color: white;
 }</string>
      </property>
      <row>
@@ -4179,10 +4224,17 @@ padding: 5px;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: #1a3a8a;
-color: white;
-font-weight: bold;
-padding: 5px;</string>
+       <string notr="true">QPushButton {
+    background-color: rgb(26, 58, 138);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(15, 40, 100);
+}
+QPushButton:pressed {
+    background-color: rgb(10, 25, 70);
+}</string>
       </property>
       <property name="text">
        <string>  Module 1  </string>
@@ -4205,6 +4257,19 @@ padding: 5px;</string>
         <underline>true</underline>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(26, 58, 138);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(15, 40, 100);
+}
+QPushButton:pressed {
+    background-color: rgb(10, 25, 70);
+}</string>
+      </property>
       <property name="text">
        <string>Module 2  </string>
       </property>
@@ -4226,6 +4291,19 @@ padding: 5px;</string>
         <underline>true</underline>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(26, 58, 138);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(15, 40, 100);
+}
+QPushButton:pressed {
+    background-color: rgb(10, 25, 70);
+}</string>
+      </property>
       <property name="text">
        <string>Module 3  </string>
       </property>
@@ -4246,6 +4324,19 @@ padding: 5px;</string>
         <bold>true</bold>
         <underline>true</underline>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(26, 58, 138);
+    color: white;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: rgb(15, 40, 100);
+}
+QPushButton:pressed {
+    background-color: rgb(10, 25, 70);
+}</string>
       </property>
       <property name="text">
        <string>Module 4  </string>

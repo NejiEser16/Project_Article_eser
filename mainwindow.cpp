@@ -22,7 +22,7 @@ void MainWindow::loadChercheurs()
     chercheurs.clear();
     chercheurMap.clear();
 
-    QSqlQuery query("SELECT IDCHERCHEUR, NOM FROM NEYMAR.CHERCHEUR WHERE STATUT = 'actif'");
+    QSqlQuery query("SELECT IDCHERCHEUR, NOM FROM ESER.CHERCHEUR WHERE STATUT = 'actif'");
     while (query.next()) {
         int id = query.value("IDCHERCHEUR").toInt();
         QString nom = query.value("NOM").toString();
@@ -36,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     loadChercheurs();
     ui->dateEdit_3->setDate(QDate(2000,1,1));
     ui->dateEdit_4->setDate(QDate::currentDate());
@@ -55,21 +57,23 @@ void MainWindow::refreshTable(const QString &titreFilter,
 
     QSqlQuery query;
     QString sql = "SELECT ID, TITRE, STATUT, RESUME, CHERCHEUR_ASSOCIE, DATE_CREATION, DATE_MODIFICATION "
-                  "FROM SYSTEM.ARTICLES WHERE 1=1";
+                  "FROM ESER.ARTICLES WHERE 1=1";
 
     if(!titreFilter.isEmpty())
         sql += " AND TITRE LIKE :titre";
     if(statutFilter != "Tous")
         sql += " AND STATUT = :statut";
-    sql += " AND DATE_CREATION BETWEEN :dateFrom AND :dateTo";
+
+    sql += " AND TRUNC(DATE_CREATION) BETWEEN TO_DATE(:dateFrom,'YYYY-MM-DD') AND TO_DATE(:dateTo,'YYYY-MM-DD')";
 
     query.prepare(sql);
     if(!titreFilter.isEmpty())
         query.bindValue(":titre", "%" + titreFilter + "%");
     if(statutFilter != "Tous")
         query.bindValue(":statut", statutFilter);
-    query.bindValue(":dateFrom", dateFrom);
-    query.bindValue(":dateTo", dateTo);
+
+    query.bindValue(":dateFrom", dateFrom.toString("yyyy-MM-dd"));
+    query.bindValue(":dateTo", dateTo.toString("yyyy-MM-dd"));
 
     if(!query.exec()) {
         QMessageBox::critical(this, "Erreur Oracle", query.lastError().text());
@@ -125,10 +129,12 @@ void MainWindow::on_pushButton_2_clicked()
     Article A(0, titre, resume, QDate::currentDate(), statut, id_chercheur);
 
     if(A.ajouter()) {
+        QSqlQuery commitQuery;
+        commitQuery.exec("COMMIT");
         QMessageBox::information(this, "Succès", "Article créé !");
         ui->lineEdit_2->clear();
         ui->plainTextEdit->clear();
-        refreshTable();
+        refreshTable("", "Tous", QDate(2000,1,1), QDate::currentDate());
     } else {
         QMessageBox::critical(this, "Erreur", "Cet article existe déjà !");
     }
@@ -161,8 +167,14 @@ void MainWindow::on_pushButton_5_clicked()
                               "Voulez-vous vraiment supprimer cet article ?",
                               QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes) {
         if(tmp_article.supprimer(id)) {
+            QSqlQuery commitQuery;
+            commitQuery.exec("COMMIT");
             QMessageBox::information(this, "Succès", "Article supprimé !");
-            refreshTable();
+            QString titre = ui->lineEdit_3->text().trimmed();
+            QString statut = ui->comboBox_2->currentText();
+            QDate dateFrom = ui->dateEdit_3->date();
+            QDate dateTo   = ui->dateEdit_4->date();
+            refreshTable(titre, statut, dateFrom, dateTo);
         } else {
             QMessageBox::critical(this, "Erreur", "Impossible de supprimer !");
         }
@@ -179,7 +191,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    QSqlQuery query("SELECT * FROM SYSTEM.ARTICLES ORDER BY ID");
+    QSqlQuery query("SELECT * FROM ESER.ARTICLES ORDER BY ID");
     if(!query.next()) {
         QMessageBox::information(this, "Exporter", "Aucun article à exporter.");
         return;
@@ -227,7 +239,7 @@ void MainWindow::on_pushButton_11_clicked()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM SYSTEM.ARTICLES WHERE TITRE = :titre");
+    query.prepare("SELECT * FROM ESER.ARTICLES WHERE TITRE = :titre");
     query.bindValue(":titre", oldTitle);
 
     if(!query.exec() || !query.next()) {
@@ -292,7 +304,7 @@ void MainWindow::on_pushButton_11_clicked()
         }
 
         QSqlQuery updateQuery;
-        updateQuery.prepare("UPDATE SYSTEM.ARTICLES SET TITRE = :titre, RESUME = :res, "
+        updateQuery.prepare("UPDATE ESER.ARTICLES SET TITRE = :titre, RESUME = :res, "
                             "STATUT = :statut, CHERCHEUR_ASSOCIE = :ch, DATE_MODIFICATION = SYSDATE "
                             "WHERE ID = :id");
         updateQuery.bindValue(":titre", newTitle);
@@ -302,8 +314,14 @@ void MainWindow::on_pushButton_11_clicked()
         updateQuery.bindValue(":id", idArticle);
 
         if(updateQuery.exec()) {
+            QSqlQuery commitQuery;
+            commitQuery.exec("COMMIT");
             QMessageBox::information(this,"Modifier","Article modifié avec succès !");
-            refreshTable();
+            QString titre = ui->lineEdit_3->text().trimmed();
+            QString statut = ui->comboBox_2->currentText();
+            QDate dateFrom = ui->dateEdit_3->date();
+            QDate dateTo   = ui->dateEdit_4->date();
+            refreshTable(titre, statut, dateFrom, dateTo);
         } else {
             QMessageBox::critical(this,"Modifier","Erreur: "+updateQuery.lastError().text());
         }
@@ -313,7 +331,7 @@ void MainWindow::on_pushButton_11_clicked()
 void MainWindow::on_pushButton_12_clicked()
 {
     QSqlQuery query;
-    query.prepare("SELECT STATUT, COUNT(*) as NB FROM SYSTEM.ARTICLES GROUP BY STATUT");
+    query.prepare("SELECT STATUT, COUNT(*) as NB FROM ESER.ARTICLES GROUP BY STATUT");
 
     if(!query.exec()) {
         QMessageBox::critical(this, "Erreur", query.lastError().text());
@@ -337,7 +355,7 @@ void MainWindow::on_pushButton_13_clicked()
 {
     QSqlQuery query;
     query.prepare("SELECT CHERCHEUR_ASSOCIE, COUNT(*) as NB "
-                  "FROM SYSTEM.ARTICLES "
+                  "FROM ESER.ARTICLES "
                   "GROUP BY CHERCHEUR_ASSOCIE "
                   "ORDER BY NB DESC");
 

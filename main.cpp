@@ -4,24 +4,18 @@
 #include "connection.h"
 #include <QSqlQuery>
 #include <QSqlError>
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
     Connection c;
     bool connected = c.createconnect();
-
     if (connected) {
-        // Optional database test
         QSqlQuery queryTest;
-        if (!queryTest.exec("SELECT COUNT(*) FROM SYSTEM.ARTICLES")) {
+        if (!queryTest.exec("SELECT COUNT(*) FROM ESER.ARTICLES")) {
             QMessageBox::critical(nullptr, "Test DB", queryTest.lastError().text());
         }
     }
-
     MainWindow w;
-
     if (connected)
     {
         w.show();
@@ -32,6 +26,5 @@ int main(int argc, char *argv[])
         QMessageBox::critical(nullptr, "S5 - Erreur",
                               "La connexion a échoué.\nVérifiez votre source ODBC.");
     }
-
     return a.exec();
 }
