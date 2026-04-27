@@ -115,7 +115,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(10, -50, 1081, 801));
+        groupBox->setGeometry(QRect(0, 10, 1081, 801));
         QFont font;
         font.setFamilies({QString::fromUtf8("Italic Outline Art")});
         font.setPointSize(17);
@@ -316,12 +316,7 @@ public:
         brush12.setStyle(Qt::SolidPattern);
         palette1.setBrush(QPalette::Disabled, QPalette::Accent, brush12);
         pushButton->setPalette(palette1);
-        QFont font4;
-        font4.setPointSize(12);
-        font4.setBold(true);
-        font4.setItalic(false);
-        font4.setUnderline(false);
-        pushButton->setFont(font4);
+        pushButton->setFont(font1);
         pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -344,12 +339,12 @@ public:
         label_17 = new QLabel(groupBox_2);
         label_17->setObjectName("label_17");
         label_17->setGeometry(QRect(70, 170, 63, 20));
-        QFont font5;
-        font5.setPointSize(11);
-        font5.setBold(true);
-        font5.setItalic(false);
-        font5.setUnderline(false);
-        label_17->setFont(font5);
+        QFont font4;
+        font4.setPointSize(11);
+        font4.setBold(true);
+        font4.setItalic(false);
+        font4.setUnderline(false);
+        label_17->setFont(font4);
         label_17->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #1a3a8a;\n"
 "    font-weight: bold;\n"
@@ -366,7 +361,7 @@ public:
         label_18 = new QLabel(groupBox_2);
         label_18->setObjectName("label_18");
         label_18->setGeometry(QRect(260, 170, 63, 20));
-        label_18->setFont(font5);
+        label_18->setFont(font4);
         label_18->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #1a3a8a;\n"
 "    font-weight: bold;\n"
@@ -383,18 +378,19 @@ public:
         groupBox_3 = new QGroupBox(groupBox);
         groupBox_3->setObjectName("groupBox_3");
         groupBox_3->setGeometry(QRect(660, 420, 351, 151));
-        QFont font6;
-        font6.setPointSize(12);
-        font6.setBold(true);
-        font6.setItalic(true);
-        groupBox_3->setFont(font6);
+        QFont font5;
+        font5.setPointSize(12);
+        font5.setBold(true);
+        font5.setItalic(true);
+        groupBox_3->setFont(font5);
         pushButton_11 = new QPushButton(groupBox_3);
         pushButton_11->setObjectName("pushButton_11");
         pushButton_11->setGeometry(QRect(110, 110, 151, 29));
-        QFont font7;
-        font7.setPointSize(14);
-        font7.setBold(true);
-        pushButton_11->setFont(font7);
+        QFont font6;
+        font6.setPointSize(14);
+        font6.setBold(true);
+        font6.setItalic(true);
+        pushButton_11->setFont(font6);
         pushButton_11->setAutoFillBackground(false);
         pushButton_11->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
@@ -410,11 +406,11 @@ public:
         label = new QLabel(groupBox_3);
         label->setObjectName("label");
         label->setGeometry(QRect(10, 20, 141, 20));
-        QFont font8;
-        font8.setPointSize(11);
-        font8.setBold(true);
-        font8.setItalic(true);
-        label->setFont(font8);
+        QFont font7;
+        font7.setPointSize(11);
+        font7.setBold(true);
+        font7.setItalic(true);
+        label->setFont(font7);
         lineEdit = new QLineEdit(groupBox_3);
         lineEdit->setObjectName("lineEdit");
         lineEdit->setGeometry(QRect(150, 50, 151, 28));
@@ -423,15 +419,15 @@ public:
         groupBox_5 = new QGroupBox(groupBox);
         groupBox_5->setObjectName("groupBox_5");
         groupBox_5->setGeometry(QRect(160, 140, 461, 431));
-        groupBox_5->setFont(font6);
+        groupBox_5->setFont(font5);
         label_2 = new QLabel(groupBox_5);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(10, 20, 63, 20));
-        QFont font9;
-        font9.setPointSize(13);
-        font9.setBold(true);
-        font9.setItalic(true);
-        label_2->setFont(font9);
+        QFont font8;
+        font8.setPointSize(13);
+        font8.setBold(true);
+        font8.setItalic(true);
+        label_2->setFont(font8);
         label_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #1a3a8a;\n"
 "    font-weight: bold;\n"
@@ -449,7 +445,7 @@ public:
         label_3 = new QLabel(groupBox_5);
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(10, 80, 91, 20));
-        label_3->setFont(font9);
+        label_3->setFont(font8);
         label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #1a3a8a;\n"
 "    font-weight: bold;\n"
@@ -460,11 +456,11 @@ public:
         comboBox->addItem(QString());
         comboBox->setObjectName("comboBox");
         comboBox->setGeometry(QRect(130, 100, 121, 28));
-        QFont font10;
-        font10.setPointSize(11);
-        font10.setBold(true);
-        font10.setItalic(false);
-        comboBox->setFont(font10);
+        QFont font9;
+        font9.setPointSize(11);
+        font9.setBold(true);
+        font9.setItalic(false);
+        comboBox->setFont(font9);
         comboBox->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    background-color: #ffffff;\n"
 "    color: #000000;\n"
@@ -482,7 +478,7 @@ public:
         label_4 = new QLabel(groupBox_5);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(10, 140, 91, 20));
-        label_4->setFont(font9);
+        label_4->setFont(font8);
         label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #1a3a8a;\n"
 "    font-weight: bold;\n"
@@ -574,11 +570,7 @@ public:
         brush18.setStyle(Qt::SolidPattern);
         palette2.setBrush(QPalette::Disabled, QPalette::Accent, brush18);
         pushButton_2->setPalette(palette2);
-        QFont font11;
-        font11.setPointSize(14);
-        font11.setBold(true);
-        font11.setItalic(false);
-        pushButton_2->setFont(font11);
+        pushButton_2->setFont(font6);
         pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -593,17 +585,17 @@ public:
         label_15 = new QLabel(groupBox_5);
         label_15->setObjectName("label_15");
         label_15->setGeometry(QRect(10, 300, 201, 20));
-        label_15->setFont(font9);
+        label_15->setFont(font8);
         comboBox_3 = new QComboBox(groupBox_5);
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
         comboBox_3->addItem(QString());
         comboBox_3->setObjectName("comboBox_3");
         comboBox_3->setGeometry(QRect(220, 330, 151, 28));
-        QFont font12;
-        font12.setPointSize(10);
-        font12.setBold(true);
-        comboBox_3->setFont(font12);
+        QFont font10;
+        font10.setPointSize(10);
+        font10.setBold(true);
+        comboBox_3->setFont(font10);
         comboBox_3->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
         groupBox_6 = new QGroupBox(groupBox);
@@ -674,11 +666,11 @@ public:
 #endif
         palette3.setBrush(QPalette::Disabled, QPalette::Accent, brush12);
         pushButton_3->setPalette(palette3);
-        QFont font13;
-        font13.setPointSize(10);
-        font13.setBold(true);
-        font13.setItalic(false);
-        pushButton_3->setFont(font13);
+        QFont font11;
+        font11.setPointSize(10);
+        font11.setBold(true);
+        font11.setItalic(true);
+        pushButton_3->setFont(font11);
         pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -769,7 +761,7 @@ public:
         brush25.setStyle(Qt::SolidPattern);
         palette4.setBrush(QPalette::Disabled, QPalette::Accent, brush25);
         pushButton_5->setPalette(palette4);
-        pushButton_5->setFont(font13);
+        pushButton_5->setFont(font11);
         pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -846,7 +838,7 @@ public:
 #endif
         palette5.setBrush(QPalette::Disabled, QPalette::Accent, brush12);
         pushButton_4->setPalette(palette5);
-        pushButton_4->setFont(font13);
+        pushButton_4->setFont(font11);
         pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -861,7 +853,7 @@ public:
         pushButton_12 = new QPushButton(groupBox_6);
         pushButton_12->setObjectName("pushButton_12");
         pushButton_12->setGeometry(QRect(560, 10, 131, 41));
-        pushButton_12->setFont(font12);
+        pushButton_12->setFont(font11);
         pushButton_12->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -876,7 +868,7 @@ public:
         pushButton_13 = new QPushButton(groupBox_6);
         pushButton_13->setObjectName("pushButton_13");
         pushButton_13->setGeometry(QRect(720, 10, 121, 41));
-        pushButton_13->setFont(font12);
+        pushButton_13->setFont(font11);
         pushButton_13->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(255, 106, 0);\n"
 "    color: white;\n"
@@ -891,12 +883,13 @@ public:
         label_13 = new QLabel(groupBox);
         label_13->setObjectName("label_13");
         label_13->setGeometry(QRect(150, 570, 171, 31));
-        QFont font14;
-        font14.setPointSize(16);
-        font14.setBold(true);
-        font14.setItalic(true);
-        font14.setUnderline(true);
-        label_13->setFont(font14);
+        QFont font12;
+        font12.setPointSize(16);
+        font12.setBold(true);
+        font12.setItalic(true);
+        font12.setUnderline(true);
+        font12.setStrikeOut(false);
+        label_13->setFont(font12);
         label_13->setStyleSheet(QString::fromUtf8("color:#1a3a8a;"));
         tableWidget = new QTableWidget(groupBox);
         if (tableWidget->columnCount() < 6)
@@ -924,13 +917,13 @@ public:
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tableWidget->setVerticalHeaderItem(3, __qtablewidgetitem9);
         tableWidget->setObjectName("tableWidget");
-        tableWidget->setGeometry(QRect(230, 630, 641, 131));
+        tableWidget->setGeometry(QRect(230, 630, 651, 131));
         tableWidget->setMaximumSize(QSize(671, 16777215));
-        QFont font15;
-        font15.setPointSize(8);
-        font15.setBold(true);
-        font15.setItalic(true);
-        tableWidget->setFont(font15);
+        QFont font13;
+        font13.setPointSize(8);
+        font13.setBold(true);
+        font13.setItalic(true);
+        tableWidget->setFont(font13);
         tableWidget->setStyleSheet(QString::fromUtf8("/* Forces the background of the entire table area to white */\n"
 "QTableView {\n"
 "    background-color: white;\n"
@@ -1066,7 +1059,7 @@ public:
         brush33.setStyle(Qt::SolidPattern);
         palette6.setBrush(QPalette::Disabled, QPalette::Accent, brush33);
         pushButton_6->setPalette(palette6);
-        pushButton_6->setFont(font9);
+        pushButton_6->setFont(font8);
         pushButton_6->setStyleSheet(QString::fromUtf8("background-color: #ff7e39;;\n"
 "color: white;\n"
 "font-weight: bold;\n"
@@ -1074,13 +1067,13 @@ public:
         pushButton_7 = new QPushButton(frame);
         pushButton_7->setObjectName("pushButton_7");
         pushButton_7->setGeometry(QRect(-10, 80, 151, 61));
-        QFont font16;
-        font16.setPointSize(11);
-        font16.setBold(true);
-        font16.setItalic(true);
-        font16.setUnderline(true);
-        font16.setStrikeOut(false);
-        pushButton_7->setFont(font16);
+        QFont font14;
+        font14.setPointSize(11);
+        font14.setBold(true);
+        font14.setItalic(true);
+        font14.setUnderline(true);
+        font14.setStrikeOut(false);
+        pushButton_7->setFont(font14);
         pushButton_7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(26, 58, 138);\n"
 "    color: white;\n"
@@ -1095,12 +1088,12 @@ public:
         pushButton_8 = new QPushButton(frame);
         pushButton_8->setObjectName("pushButton_8");
         pushButton_8->setGeometry(QRect(-10, 160, 151, 61));
-        QFont font17;
-        font17.setPointSize(11);
-        font17.setBold(true);
-        font17.setItalic(true);
-        font17.setUnderline(true);
-        pushButton_8->setFont(font17);
+        QFont font15;
+        font15.setPointSize(11);
+        font15.setBold(true);
+        font15.setItalic(true);
+        font15.setUnderline(true);
+        pushButton_8->setFont(font15);
         pushButton_8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(26, 58, 138);\n"
 "    color: white;\n"
@@ -1115,7 +1108,7 @@ public:
         pushButton_9 = new QPushButton(frame);
         pushButton_9->setObjectName("pushButton_9");
         pushButton_9->setGeometry(QRect(-10, 240, 151, 61));
-        pushButton_9->setFont(font17);
+        pushButton_9->setFont(font15);
         pushButton_9->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(26, 58, 138);\n"
 "    color: white;\n"
@@ -1130,7 +1123,7 @@ public:
         pushButton_10 = new QPushButton(frame);
         pushButton_10->setObjectName("pushButton_10");
         pushButton_10->setGeometry(QRect(-10, 320, 151, 61));
-        pushButton_10->setFont(font17);
+        pushButton_10->setFont(font15);
         pushButton_10->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(26, 58, 138);\n"
 "    color: white;\n"

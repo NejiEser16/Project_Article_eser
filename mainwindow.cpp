@@ -15,6 +15,88 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QPlainTextEdit>
+#include <QSerialPort>
+#include <QSerialPortInfo>
+
+// ===================== SERIAL SETUP =====================
+
+void MainWindow::setupSerial() {
+    arduino = new QSerialPort(this);
+
+    // Find Arduino port automatically
+    foreach (const QSerialPortInfo &port, QSerialPortInfo::availablePorts()) {
+        if (port.description().contains("Arduino") ||
+            port.manufacturer().contains("Arduino") ||
+            port.description().contains("USB-SERIAL")) {
+            arduino->setPortName(port.portName());
+            break;
+        }
+    }
+
+    // If not found automatically, set default
+    if (arduino->portName().isEmpty()) {
+        arduino->setPortName("COM3"); // change if needed
+    }
+
+    arduino->setBaudRate(QSerialPort::Baud9600);
+    arduino->setDataBits(QSerialPort::Data8);
+    arduino->setParity(QSerialPort::NoParity);
+    arduino->setStopBits(QSerialPort::OneStop);
+    arduino->setFlowControl(QSerialPort::NoFlowControl);
+
+    if (arduino->open(QIODevice::ReadWrite)) {
+        qDebug() << "Arduino connected on port:" << arduino->portName();
+        connect(arduino, &QSerialPort::readyRead,
+                this, &MainWindow::handleSerialData);
+    } else {
+        qDebug() << "Arduino not connected - Serial port failed";
+    }
+}
+
+void MainWindow::sendToArduino(QString message) {
+    if (arduino && arduino->isOpen()) {
+        arduino->write((message + "\n").toUtf8());
+        qDebug() << "Sent to Arduino:" << message;
+    } else {
+        qDebug() << "Arduino not connected!";
+    }
+}
+
+void MainWindow::handleSerialData() {
+    QByteArray data = arduino->readAll();
+    QString idStr = QString(data).trimmed();
+    qDebug() << "Received from Arduino:" << idStr;
+
+    bool ok;
+    int id = idStr.toInt(&ok);
+    if (ok && id > 0) {
+        checkChercheurAndBuzz(id);
+    }
+}
+
+void MainWindow::checkChercheurAndBuzz(int idChercheur) {
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM ESER.ARTICLES "
+                  "WHERE CHERCHEUR_ASSOCIE = :id "
+                  "AND STATUT = 'Publié'");
+    query.bindValue(":id", idChercheur);
+
+    if (query.exec() && query.next()) {
+        int count = query.value(0).toInt();
+        if (count > 0) {
+            sendToArduino("ACCESS_OK");
+            QMessageBox::information(this, "Accès Autorisé",
+                                     "✅ Chercheur trouvé!\n" +
+                                         QString::number(count) + " article(s) publié(s)");
+        } else {
+            sendToArduino("ACCESS_DENIED");
+            QMessageBox::warning(this, "Accès Refusé",
+                                 "❌ Aucun article publié pour ce chercheur!");
+        }
+    }
+}
+
+// ===================== LOAD CHERCHEURS =====================
 
 void MainWindow::loadChercheurs()
 {
@@ -32,6 +114,8 @@ void MainWindow::loadChercheurs()
     }
 }
 
+// ===================== CONSTRUCTOR =====================
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -42,11 +126,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->dateEdit_3->setDate(QDate(2000,1,1));
     ui->dateEdit_4->setDate(QDate::currentDate());
     refreshTable();
+    setupSerial(); // Initialize Arduino connection
 }
 
 MainWindow::~MainWindow() {
+    if (arduino && arduino->isOpen())
+        arduino->close();
     delete ui;
 }
+
+// ===================== REFRESH TABLE =====================
 
 void MainWindow::refreshTable(const QString &titreFilter,
                               const QString &statutFilter,
@@ -93,6 +182,8 @@ void MainWindow::refreshTable(const QString &titreFilter,
         ui->tableWidget->setItem(row, 6, new QTableWidgetItem(query.value("DATE_MODIFICATION").toDate().toString("yyyy-MM-dd")));
     }
 }
+
+// ===================== BUTTONS =====================
 
 void MainWindow::on_pushButton_2_clicked()
 {
@@ -170,11 +261,10 @@ void MainWindow::on_pushButton_5_clicked()
             QSqlQuery commitQuery;
             commitQuery.exec("COMMIT");
             QMessageBox::information(this, "Succès", "Article supprimé !");
-            QString titre = ui->lineEdit_3->text().trimmed();
-            QString statut = ui->comboBox_2->currentText();
-            QDate dateFrom = ui->dateEdit_3->date();
-            QDate dateTo   = ui->dateEdit_4->date();
-            refreshTable(titre, statut, dateFrom, dateTo);
+            refreshTable(ui->lineEdit_3->text().trimmed(),
+                         ui->comboBox_2->currentText(),
+                         ui->dateEdit_3->date(),
+                         ui->dateEdit_4->date());
         } else {
             QMessageBox::critical(this, "Erreur", "Impossible de supprimer !");
         }
@@ -317,11 +407,10 @@ void MainWindow::on_pushButton_11_clicked()
             QSqlQuery commitQuery;
             commitQuery.exec("COMMIT");
             QMessageBox::information(this,"Modifier","Article modifié avec succès !");
-            QString titre = ui->lineEdit_3->text().trimmed();
-            QString statut = ui->comboBox_2->currentText();
-            QDate dateFrom = ui->dateEdit_3->date();
-            QDate dateTo   = ui->dateEdit_4->date();
-            refreshTable(titre, statut, dateFrom, dateTo);
+            refreshTable(ui->lineEdit_3->text().trimmed(),
+                         ui->comboBox_2->currentText(),
+                         ui->dateEdit_3->date(),
+                         ui->dateEdit_4->date());
         } else {
             QMessageBox::critical(this,"Modifier","Erreur: "+updateQuery.lastError().text());
         }

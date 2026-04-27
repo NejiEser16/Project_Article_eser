@@ -1,10 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include <QMainWindow>
 #include "article.h"
 #include <QStringList>
 #include <QDate>
 #include <QMap>
+#include <QSerialPort>
+#include <QSerialPortInfo>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,9 +16,11 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
     void refreshTable(const QString &titreFilter = "",
                       const QString &statutFilter = "Tous",
                       const QDate &dateFrom = QDate(2000,1,1),
@@ -31,11 +36,17 @@ private slots:
     void on_pushButton_11_clicked();
     void on_pushButton_12_clicked();
     void on_pushButton_13_clicked();
+    void handleSerialData();
 
 private:
     Ui::MainWindow *ui;
     Article tmp_article;
     QStringList chercheurs;
     QMap<int, QString> chercheurMap;
+    QSerialPort *arduino;
+    void setupSerial();
+    void sendToArduino(QString message);
+    void checkChercheurAndBuzz(int idChercheur);
 };
+
 #endif // MAINWINDOW_H

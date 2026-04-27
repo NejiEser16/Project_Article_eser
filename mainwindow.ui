@@ -129,8 +129,8 @@ QPushButton:pressed {
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>-50</y>
+      <x>0</x>
+      <y>10</y>
       <width>1081</width>
       <height>801</height>
      </rect>
@@ -841,7 +841,7 @@ QComboBox QAbstractItemView {
       <property name="font">
        <font>
         <pointsize>12</pointsize>
-        <italic>false</italic>
+        <italic>true</italic>
         <bold>true</bold>
         <underline>false</underline>
        </font>
@@ -1026,6 +1026,7 @@ QPushButton:pressed {
       <property name="font">
        <font>
         <pointsize>14</pointsize>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -1777,7 +1778,7 @@ QComboBox QAbstractItemView {
       <property name="font">
        <font>
         <pointsize>14</pointsize>
-        <italic>false</italic>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -2374,7 +2375,7 @@ color: rgb(0, 0, 0);</string>
       <property name="font">
        <font>
         <pointsize>10</pointsize>
-        <italic>false</italic>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -2903,7 +2904,7 @@ QPushButton:pressed {
       <property name="font">
        <font>
         <pointsize>10</pointsize>
-        <italic>false</italic>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -3432,7 +3433,7 @@ QPushButton:pressed {
       <property name="font">
        <font>
         <pointsize>10</pointsize>
-        <italic>false</italic>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -3465,6 +3466,7 @@ QPushButton:pressed {
       <property name="font">
        <font>
         <pointsize>10</pointsize>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -3497,6 +3499,7 @@ QPushButton:pressed {
       <property name="font">
        <font>
         <pointsize>10</pointsize>
+        <italic>true</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -3533,6 +3536,7 @@ QPushButton:pressed {
        <italic>true</italic>
        <bold>true</bold>
        <underline>true</underline>
+       <strikeout>false</strikeout>
       </font>
      </property>
      <property name="styleSheet">
@@ -3547,7 +3551,7 @@ QPushButton:pressed {
       <rect>
        <x>230</x>
        <y>630</y>
-       <width>641</width>
+       <width>651</width>
        <height>131</height>
       </rect>
      </property>
