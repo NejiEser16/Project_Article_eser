@@ -23,7 +23,6 @@
 void MainWindow::setupSerial() {
     arduino = new QSerialPort(this);
 
-    // Find Arduino port automatically
     foreach (const QSerialPortInfo &port, QSerialPortInfo::availablePorts()) {
         if (port.description().contains("Arduino") ||
             port.manufacturer().contains("Arduino") ||
@@ -33,9 +32,8 @@ void MainWindow::setupSerial() {
         }
     }
 
-    // If not found automatically, set default
     if (arduino->portName().isEmpty()) {
-        arduino->setPortName("COM3"); // change if needed
+        arduino->setPortName("COM3");
     }
 
     arduino->setBaudRate(QSerialPort::Baud9600);
@@ -76,23 +74,19 @@ void MainWindow::handleSerialData() {
 
 void MainWindow::checkChercheurAndBuzz(int idChercheur) {
     QSqlQuery query;
-    query.prepare("SELECT COUNT(*) FROM ESER.ARTICLES "
-                  "WHERE CHERCHEUR_ASSOCIE = :id "
-                  "AND STATUT = 'Publié'");
+    query.prepare("SELECT NOM FROM ESER.CHERCHEUR "
+                  "WHERE IDCHERCHEUR = :id");
     query.bindValue(":id", idChercheur);
 
     if (query.exec() && query.next()) {
-        int count = query.value(0).toInt();
-        if (count > 0) {
-            sendToArduino("ACCESS_OK");
-            QMessageBox::information(this, "Accès Autorisé",
-                                     "✅ Chercheur trouvé!\n" +
-                                         QString::number(count) + " article(s) publié(s)");
-        } else {
-            sendToArduino("ACCESS_DENIED");
-            QMessageBox::warning(this, "Accès Refusé",
-                                 "❌ Aucun article publié pour ce chercheur!");
-        }
+        QString nom = query.value("NOM").toString();
+        sendToArduino("OK:" + nom);
+        QMessageBox::information(this, "Accès Autorisé",
+                                 "✅ Chercheur trouvé: " + nom);
+    } else {
+        sendToArduino("DENIED");
+        QMessageBox::warning(this, "Accès Refusé",
+                             "❌ Aucun chercheur lié à cet ID!");
     }
 }
 
@@ -126,7 +120,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->dateEdit_3->setDate(QDate(2000,1,1));
     ui->dateEdit_4->setDate(QDate::currentDate());
     refreshTable();
-    setupSerial(); // Initialize Arduino connection
+    setupSerial();
 }
 
 MainWindow::~MainWindow() {
